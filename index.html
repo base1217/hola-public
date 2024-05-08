@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Mini App Example</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .message { margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 10px; }
+        .message img { max-width: 100%; height: auto; border-radius: 5px; }
+        .message .caption { margin-top: 5px; }
+        button { padding: 10px 20px; background-color: #0088cc; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #005599; }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <img src="https://example.com/photo.jpg" alt="Example Photo">
+        <div class="caption">This is an example caption for the image above.</div>
+    </div>
+    
+    <button onclick="sendMessage()">Send Message</button>
+    
+    <script>
+        function sendMessage() {
+            fetch('http://yourserver.com/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: 'Hello, this is a test message!' })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
